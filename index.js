@@ -16,7 +16,7 @@ class Store {
         this.type = type;
     }
     init() {
-        const _todo = JSON.parse(localStorage.getItem('todo') ?? JSON.stringify(initialTodo));
+        const _todo = JSON.parse(localStorage.getItem('todo') ?? '[]');
         this.data = _todo.map(todo => {
             todo.id = this._availableId;
             this._availableId++
@@ -80,32 +80,6 @@ class Store {
         this._persist();
     }
 }
-let initialTodo = [
-  {
-    desc: "some todo",
-    status: Store.STATUS.INPROGRESS,
-  },
-  {
-    desc: "some todo",
-    status: Store.STATUS.DONE,
-  },
-  {
-    desc: "some todo",
-    status: Store.STATUS.OPEN,
-  },
-  {
-    desc: "some todo",
-    status: Store.STATUS.INPROGRESS,
-  },
-  {
-    desc: "some todo",
-    status: Store.STATUS.OPEN,
-  },
-  {
-    desc: "some todo",
-    status: Store.STATUS.OPEN,
-  },
-];
 const store = new Store('todo');
 window.store = store;
 store.init();
