@@ -174,9 +174,6 @@ function createTodoEl(todo) {
 };
 document.addEventListener("DOMContentLoaded", () => {
     const containerEl = document.getElementById("todos-container");
-    store.sub((changes) => {
-        // console.log('changed', changes);
-    });
 
     store.sub(changes => {
         changes.forEach(change => {
