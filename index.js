@@ -53,7 +53,7 @@ class Store {
         this.data = this.data.filter(d => d.id !== id);
         this._changed([{id, action: Store.ACTION.DELETE}])
     }
-    deleteMultible(ids) {
+    deleteMultiple(ids) {
         this.data = this.data.filter(d => !ids.includes(d.id));
         this._changed(ids.map(id => {
             return {
