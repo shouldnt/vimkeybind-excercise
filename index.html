@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div id="main-content">
+        <div class="create-todo">
+            <form action="#">
+                <input type="text" name="desc">
+                <button type="submit">create</button>
+            </form>
+        </div>
+        <div id="todos-container"></div>
+    </div>
+    <div id="todo-template" class="todo" style="display: none;">
+        <div class="desc"></div>
+        <div class="change-status">
+            <button class="status open">open</button>
+            <button class="status inprogress">inprogress</button>
+            <button class="status done">done</button>
+        </div>
+        <button class="edit">edit</button>
+        <button class="delete">delete</button>
+    </div>
+</body>
+</html>

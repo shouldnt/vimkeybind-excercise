@@ -1,0 +1,41 @@
+.todo {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.todo .desc {
+    margin-bottom: 20px;
+}
+.todo .change-status {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo .status {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: .1;
+}
+.todo .status:hover {
+    opacity: 1;
+}
+.todo .status.active {
+    pointer-events: none;
+    opacity: 1;
+}
+.todo .status.open {
+    background: grey;
+    color: white;
+}
+.todo .status.inprogress {
+    background: blue;
+    color: white;
+}
+.todo .status.done {
+    background: green;
+    color: white;
+}
