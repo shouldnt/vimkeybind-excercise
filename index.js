@@ -3,6 +3,10 @@ const STATUS = {
   INPROGRESS: "INPROGRESS",
   DONE: "DONE",
 };
+const FILTER_TYPE = {
+  ALL: "ALL",
+  ...STATUS,
+};
 const CLASS_TO_STATUS = [
   { className: "open", status: STATUS.OPEN },
   { className: "inprogress", status: STATUS.INPROGRESS },
@@ -12,10 +16,6 @@ const CLASS_TO_FILTER = [
   { className: "all", status: FILTER_TYPE.ALL },
     ...classToStatus,
 ]
-const FILTER_TYPE = {
-  ALL: "ALL",
-  ...STATUS,
-};
 class Store {
   static STATUS = {
     OPEN: "OPEN",
