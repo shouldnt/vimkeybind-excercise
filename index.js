@@ -1,3 +1,8 @@
+const STATUS = {
+  OPEN: "OPEN",
+  INPROGRESS: "INPROGRESS",
+  DONE: "DONE",
+};
 const CLASS_TO_STATUS = [
   { className: "open", status: STATUS.OPEN },
   { className: "inprogress", status: STATUS.INPROGRESS },
@@ -7,11 +12,6 @@ const CLASS_TO_FILTER = [
   { className: "all", status: FILTER_TYPE.ALL },
     ...classToStatus,
 ]
-const STATUS = {
-  OPEN: "OPEN",
-  INPROGRESS: "INPROGRESS",
-  DONE: "DONE",
-};
 const FILTER_TYPE = {
   ALL: "ALL",
   ...STATUS,
