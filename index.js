@@ -174,12 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    store.sub(changes => {
-        changes.forEach(change => {
-            if(change.action !== Store.ACTION.ADD) return;
-            containerEl.prepend(createTodoEl(change.todo))
-        })
-    })
     store.sub((filterType) => {
         containerEl.replaceChildren(); // remove all child
         store.data.forEach(todo => {
