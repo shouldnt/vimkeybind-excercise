@@ -57,7 +57,7 @@ class Store {
       cb(e.detail);
     };
     document.addEventListener(type, eventHandle);
-    const unSub = () => document.removeEventListener(this.type, eventHandle);
+    const unSub = () => document.removeEventListener(type, eventHandle);
     return unSub;
   }
   add(todo) {
@@ -198,9 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterEls = document.querySelectorAll(".change-filter .filter");
   filterEls.forEach((el) => {
     el.addEventListener("click", (e) => {
-      if (e.classList.contains("active")) return;
+      if (e.target.classList.contains("active")) return;
       const filterType = CLASS_TO_FILTER.find(item => {
-        return e.classList.contains(item.className);
+        return e.target.classList.contains(item.className);
       })
 
       if(filterType) return;
