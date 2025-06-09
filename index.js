@@ -1,3 +1,12 @@
+const STATUS = {
+    OPEN: 'OPEN',
+    INPROGRESS: 'INPROGRESS',
+    DONE: 'DONE'
+}
+const FILTER_TYPE = {
+    ALL: 'ALL',
+    ...STATUS
+}
 class Store {
     static STATUS = {
         OPEN: 'OPEN',
@@ -17,17 +26,26 @@ class Store {
     }
     init() {
         const _todo = JSON.parse(localStorage.getItem('todo') ?? '[]');
+        this.currentFilter = STATUS.ALL;
         this.data = _todo.map(todo => {
             todo.id = this._availableId;
             this._availableId++
             return todo;
         });
     }
-    sub(cb) {
+    setFilter(type) {
+        const _result = FILTER_TYPE[type];
+        if(!result) return;
+        this.currentFilter = type;
+        document.dispatchEvent(new CustomEvent(this.type + ':filterChanged', {
+            detail: type
+        }));
+    }
+    sub(cb, type = this.type) {
         const eventHandle = (e) => {
             cb(e.detail);
         }
-        document.addEventListener(this.type, eventHandle)
+        document.addEventListener(type, eventHandle)
         const unSub = () => document.removeEventListener(this.type, eventHandle);
         return unSub;
     }
@@ -63,7 +81,7 @@ class Store {
         }))
     }
     changeStatus(id, status) {
-        if(!Store.STATUS[status]) throw new Error(`invalid Status: ${status}, valid status: ${Object.values(Store.STATUS).join('/')}`)
+        if(!STATUS[status]) throw new Error(`invalid Status: ${status}, valid status: ${Object.values(STATUS).join('/')}`)
         this.data.forEach(d => {
             if(d.id !== id) return;
             d.status = status;
@@ -102,9 +120,9 @@ function createTodoEl(todo) {
     const statusEls = todoEl.querySelectorAll('.status');
 
     const statusMap = [
-        {className: 'open', status: Store.STATUS.OPEN},
-        {className: 'inprogress', status: Store.STATUS.INPROGRESS},
-        {className: 'done', status: Store.STATUS.DONE}
+        {className: 'open', status: STATUS.OPEN},
+        {className: 'inprogress', status: STATUS.INPROGRESS},
+        {className: 'done', status: STATUS.DONE}
     ]
     const updateStatusUI = (status) => {
       statusEls.forEach((el) => {
@@ -156,6 +174,20 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
+    store.sub(changes => {
+        changes.forEach(change => {
+            if(change.action !== Store.ACTION.ADD) return;
+            containerEl.prepend(createTodoEl(change.todo))
+        })
+    })
+    store.sub((filterType) => {
+        containerEl.replaceChildren(); // remove all child
+        store.data.forEach(todo => {
+            if(todo.status === filterType || filterType === FILTER_TYPE.ALL) {
+                containerEl.append(createTodoEl(todo));
+            }
+        })
+    }, store.type + ':filterChanged')
     const createTodoForm = document.querySelector('.create-todo form');
     createTodoForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -164,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!desc.trim()) {
             console.error('desc is required!!!');
         };
-        store.add({desc, status: Store.STATUS.OPEN});
+        store.add({desc, status: STATUS.OPEN});
     })
 
     store.data.forEach(todo => {
