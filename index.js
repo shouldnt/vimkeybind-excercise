@@ -14,7 +14,7 @@ const CLASS_TO_STATUS = [
 ];
 const CLASS_TO_FILTER = [
   { className: "all", status: FILTER_TYPE.ALL },
-    ...classToStatus,
+    ...CLASS_TO_STATUS,
 ]
 class Store {
   static STATUS = {
