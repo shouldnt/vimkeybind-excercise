@@ -44,7 +44,7 @@ class Store {
   }
   setFilter(type) {
     const _result = FILTER_TYPE[type];
-    if (!result) return;
+    if (!_result) return;
     this.currentFilter = type;
     document.dispatchEvent(
       new CustomEvent(this.type + ":filterChanged", {
@@ -203,9 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return e.target.classList.contains(item.className);
       })
 
-      if(filterType) return;
+      if(!filterType) return;
 
-      store.setFilter(filterType.STATUS);
+      store.setFilter(filterType.status);
     });
   });
   store.sub((filterType) => {
