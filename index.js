@@ -141,11 +141,6 @@ function createTodoEl(todo) {
 
   const statusEls = todoEl.querySelectorAll(".status");
 
-  const CLASS_TO_STATUS = [
-    { className: "open", status: STATUS.OPEN },
-    { className: "inprogress", status: STATUS.INPROGRESS },
-    { className: "done", status: STATUS.DONE },
-  ];
   const updateStatusUI = (status) => {
     statusEls.forEach((el) => {
       if (
