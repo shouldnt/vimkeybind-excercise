@@ -186,7 +186,7 @@ function createTodoEl(todo) {
   return todoEl;
 }
 document.addEventListener("DOMContentLoaded", () => {
-  const containerEl = document.getElementById("todos-container");
+  const containerEl = document.getElementById("todo-container");
 
   store.sub((changes) => {
     changes.forEach((change) => {
@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   store.sub((filterType) => {
     containerEl.replaceChildren(); // remove all child
     const classToFilter = CLASS_TO_FILTER.find(item => {
-        item.status === filterType;
+        return item.status === filterType;
     })
 
     if(classToFilter) {

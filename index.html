@@ -16,12 +16,14 @@
             </form>
         </div>
         <div class="change-filter">
-            <button class="filter all">all</button>
+            <button class="filter all active">all</button>
             <button class="filter open">open</button>
             <button class="filter inprogress">inprogress</button>
             <button class="filter done">done</button>
         </div>
-        <div id="todos-container"></div>
+        <div class="todo-container">
+            <div id="todo-container"></div>
+        </div>
     </div>
     <div id="todo-template" class="todo" style="display: none;">
         <div class="desc"></div>
@@ -30,8 +32,10 @@
             <button class="status inprogress">inprogress</button>
             <button class="status done">done</button>
         </div>
-        <button class="edit">edit</button>
-        <button class="delete">delete</button>
+        <div class="action">
+            <button class="edit">edit</button>
+            <button class="delete">delete</button>
+        </div>
     </div>
 </body>
 </html>
