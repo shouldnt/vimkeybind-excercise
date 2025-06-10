@@ -24,6 +24,27 @@ html, body {
     height: 100vh;
     overflow: hidden;
 }
+/*
+ *  STYLE 3
+ */
+
+.scroll3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: transparent;
+}
+
+.scroll3::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: var(--blue-1);
+}
+
+.scroll3::-webkit-scrollbar-thumb
+{
+	background-color: #F5F5F5;
+}
+
 button {
     outline: none;
     background: var(--brown);
