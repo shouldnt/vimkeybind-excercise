@@ -1,8 +1,132 @@
+:root {
+    --pallate: "1";
+    /* --yellow: #FBDB93,
+    --red-1: #BE5B50,
+    --red-2: #8A2D3B,
+    --red-3: #641B2E, */
+
+    --blue: #244855;
+    --blue-1: #1e3943;
+    --red: #e64833;
+    --brown: #874641;
+    --light-blue: #90Aead;
+    --skin: #fbe9d0;
+}
+* {
+    box-sizing: border-box;
+}
+html, body {
+    background-color: var(--blue);
+    color: var(--skin);
+    margin: 0;
+    padding: 0;
+    height: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+/*
+ *  STYLE 3
+ */
+
+.scroll3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: transparent;
+}
+
+.scroll3::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: var(--blue-1);
+}
+
+.scroll3::-webkit-scrollbar-thumb
+{
+	background-color: #F5F5F5;
+}
+
+button {
+    outline: none;
+    background: var(--brown);
+    color: var(--skin);
+    padding: 5px 20px;
+    border: 2px solid var(--skin);
+    box-shadow: -5px 5px 0px var(--blue-1);
+}
+button:hover {
+    filter: brightness(85%)
+}
+button:active {
+    filter: brightness(75%)
+}
+input {
+    border: 2px solid var(--skin);
+    min-height: 29px;
+}
+input:focus {
+    border-radius: 0;
+    outline: 2px solid var(--light-blue)
+}
+#main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: auto;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    overflow: visible;
+}
+#main-content .todo-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+form input {
+    flex-grow: 1;
+    box-shadow: -5px 5px 0px var(--blue-1);
+}
+.change-filter {
+    display: flex;
+    gap: 10px;
+    background-color: var(--skin);
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
+    margin-bottom: 20px;
+    box-shadow: -5px 5px 0px var(--blue-1);
+}
+.change-filter .filter {
+    flex-grow: 1;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.change-filter .filter.active {
+    background: var(--blue);
+}
+#todo-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 .todo {
     padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 2px solid var(--skin);
     margin-bottom: 20px;
+    box-shadow: -5px 5px 0px var(--blue-1);
 }
 .todo .desc {
     margin-bottom: 20px;
@@ -17,7 +141,6 @@
     background: green;
     color: white;
     padding: 5px 10px;
-    border-radius: 5px;
     opacity: .1;
 }
 .todo .status:hover {
@@ -38,4 +161,8 @@
 .todo .status.done {
     background: green;
     color: white;
+}
+.todo .action {
+    display: flex;
+    gap: 10px;
 }
